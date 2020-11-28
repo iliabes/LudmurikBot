@@ -1,0 +1,25 @@
+{
+  "name": "LudmurikBot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iliabes/LudmurikBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iliabes/LudmurikBot/issues"
+  },
+  "homepage": "https://github.com/iliabes/LudmurikBot#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-telegram-bot-api": "^0.50.0",
+    "nodemon": "^2.0.6"
+  }
+}
