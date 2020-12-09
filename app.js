@@ -35,16 +35,30 @@ function randomInteger(min,max){
 }
 
 bot.on('message', (msg) => {
-  console.log(now.getHours())
-  console.log(msg)
-  console.log(msg.from.first_name)
-  
-  if(msg.from.first_name != "Bes"){
-    console.log('bes is')
-  }
+  // console.log(now.getHours())
+  // console.log(msg)
+  // console.log(msg.from.first_name)
   let mess = msg.text.split(' ')
+  if(msg.from.first_name != "Bes"){
+    if(elem == 'Тест' || elem == 'тест' || elem == 'Test' || elem == 'test'){
+      bot.sendMessage(chatID, 
+      `Все ок, 
+      chatId: ${msg.chat.id} 
+      from: ${msg.from.id} 
+      name: ${msg.from.first_name} 
+      mesId:${msg.message_id} `)
+    }
+    if(elem == 'Время' || elem == 'время' || elem == 'дата' || elem == 'Дата'){
+      bot.sendMessage(chatID, `Все ок, ${now}`)
+    }
+  }
+
+  if(msg.from.first_name != "Bes"){
+    
+ 
+ 
   mess.forEach((elem)=>{
-    console.log(elem)
+    // console.log(elem)
     if(elem == 'Шутеечка' || elem == 'шутеечка' || elem == 'шутеечку' || elem == 'шутеечку'  || elem == 'шутка'  || elem == 'анекдот'  || elem == 'Шутеечку'){
       bot.sendPhoto(chatID,`./img/${randomInteger(1, 16)}.jpg`,{caption: joke[randomInteger(0,joke.length-1)]})
     }
@@ -66,22 +80,13 @@ bot.on('message', (msg) => {
     if(elem == 'Макс' || elem == 'макс' || elem == 'Максим' || elem == 'максим' ){
       bot.sendMessage(chatID, 'Татушки — оладушки,Максима съели бякушки')
     }
-    if(elem == 'Тест' || elem == 'тест' || elem == 'Test' || elem == 'test'){
-      bot.sendMessage(chatID, 
-      `Все ок, 
-      chatId: ${msg.chat.id} 
-      from: ${msg.from.id} 
-      name: ${msg.from.first_name} 
-      mesId:${msg.message_id} `)
-    }
-    if(elem == 'Время' || elem == 'время' || elem == 'дата' || elem == 'Дата'){
-      bot.sendMessage(chatID, `Все ок, ${now}`)
-    }
     if(elem == 'Путин' || elem == 'путин' ){
       bot.sendMessage(chatID, putIn[randomInteger(0,requireGreeting.length-1)]);
     }
   })
   
+
+}
 });
 
 
@@ -89,9 +94,9 @@ bot.on('message', (msg) => {
 
 
 function intervalMess(){
-  console.log(now.getHours())
+  // console.log(now.getHours())
   // console.log(randomInteger(1, 16))
-  if(now.getHours() == 23){
+  if(now.getHours() == 20){
       bot.sendPhoto(chatID,`./img/${randomInteger(1, 16)}.jpg`,{caption: joke[randomInteger(0,joke.length-1)]})
   }
 }
