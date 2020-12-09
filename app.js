@@ -40,6 +40,7 @@ bot.on('message', (msg) => {
   // console.log(msg.from.first_name)
   let mess = msg.text.split(' ')
   if(msg.from.first_name == "Bes"){
+    mess.forEach((elem)=>{
     if(elem == 'Тест' || elem == 'тест' || elem == 'Test' || elem == 'test'){
       bot.sendMessage(chatID, 
       `Все ок, 
@@ -50,13 +51,11 @@ bot.on('message', (msg) => {
     }
     if(elem == 'Время' || elem == 'время' || elem == 'дата' || elem == 'Дата'){
       bot.sendMessage(chatID, `Все ок, ${now}`)
-    }
+     }
+   })
   }
 
   if(msg.from.first_name != "Bes"){
-    
- 
- 
   mess.forEach((elem)=>{
     // console.log(elem)
     if(elem == 'Шутеечка' || elem == 'шутеечка' || elem == 'шутеечку' || elem == 'шутеечку'  || elem == 'шутка'  || elem == 'анекдот'  || elem == 'Шутеечку'){
@@ -71,7 +70,7 @@ bot.on('message', (msg) => {
     if(elem == 'Люда' || elem == 'Людмурик' || elem == 'Людка'){
       bot.sendMessage(chatID, 'Да');
     }
-    if(elem == 'молодец' ){
+    if(elem == 'молодец' || elem == 'брат' || elem == 'Илья' || elem == 'илья' || elem == 'сына' || elem == 'илюша' || elem == 'Илюша'){
       bot.sendMessage(chatID, 'Да ,он хороший человек');
     }
     if(elem == 'Круто' || elem == 'круто' || elem == 'крут' || elem == 'поздравляю' || elem == 'неплохо' || elem == 'Неплохо' || elem == 'Крут'){
@@ -96,14 +95,14 @@ bot.on('message', (msg) => {
 function intervalMess(){
   // console.log(now.getHours())
   // console.log(randomInteger(1, 16))
-  if(now.getHours() == 20){
+  if(now.getHours() == 11){
       bot.sendPhoto(chatID,`./img/${randomInteger(1, 16)}.jpg`,{caption: joke[randomInteger(0,joke.length-1)]})
   }
 }
 
 
 
-setInterval(intervalMess, 1000 * 60 * 5 );
+setInterval(intervalMess, 1000 * 60 * 60 );
 
 
 
