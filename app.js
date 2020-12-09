@@ -58,7 +58,7 @@ function intervalMess() {
 
 
 
-setInterval(intervalMess, 30500);
+setInterval(intervalMess, 3600);
 
 
 
