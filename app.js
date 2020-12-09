@@ -4,6 +4,8 @@ const port = process.env.PORT || 3100;
 const TelegramBot = require('node-telegram-bot-api');
 const token = '1494999143:AAGekWMRiig2KcGN7pbIRyshMvUbVza88RI';
 const chatID = '-496670652'
+let num = 0;
+let now = new Date();
 
 const bot = new TelegramBot(token, {polling: true});
 
@@ -21,7 +23,15 @@ const requireForecast = ['joke1','joke2','joke3','joke4','joke5','joke6','joke7'
 
 function randomInteger(min,max){
   let rand = min - 0.5 + Math.random() * (max-min + 1);
-  return Math.round(rand)
+  let res =  Math.round(rand)
+  if(num == res){
+    res = res + 1;
+    if(res > max){
+      res = res - 2;
+    }
+  }
+  num = res;
+  return res;
 }
 
 bot.on('message', (msg) => {  
@@ -46,26 +56,47 @@ bot.on('message', (msg) => {
     if(elem == 'Круто' || elem == 'круто' || elem == 'крут' || elem == 'поздравляю' || elem == 'неплохо' || elem == 'Неплохо' || elem == 'Крут'){
       bot.sendMessage(chatID, 'Неискренне!');
     }
+    if(elem == 'Макс' || elem == 'макс' || elem == 'Максим' || elem == 'максим' ){
+      bot.sendMessage(chatID, 'Татушки — оладушки,Максима съели бякушки')
+    }
   })
   
 });
 
 
+// app.listen(port,()=>{console.log('server is starting')})
 
-function intervalMess() {
-  bot.sendPhoto(chatID,`./img/${randomInteger(1,16)}.jpg`,{caption: joke[randomInteger(0,joke.length-1)]})
+// (function () {
+//   console.log('start')
+//   bot.sendPhoto(chatID,`./img/${generateArrayRandomNumberImg (1, 16)}.jpg`,{caption: joke[generateArrayRandomNumberJoke(0,joke.length-1)]})
+// }());
+
+
+function intervalMess(){
+
+  console.log(now.getHours())
+  // console.log(randomInteger(1, 16))
+  if(now.getHours() == 21){
+      bot.sendPhoto(chatID,`./img/${randomInteger(1, 16)}.jpg`,{caption: joke[randomInteger(0,joke.length-1)]})
+  }
 }
 
 
 
-setInterval(intervalMess, 3600);
+setInterval(intervalMess, 1000 * 60 * 60 );
 
 
 
 //---------------------------------------
+// let start = async function(){
+//   try{
+//     app.listen(port,()=>{
+//       console.log('server is starting')
+//   })
+//   resolve();
+//   }catch(e){
+//     console.log(e)
+//   }
+// }
+// start().then(() => {console.log('bla')})
 
-
-
-app.listen(port,()=>{
-    console.log('server is starting')
-})
