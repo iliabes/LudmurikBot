@@ -39,7 +39,7 @@ bot.on('message', (msg) => {
   // console.log(msg)
   // console.log(msg.from.first_name)
   let mess = msg.text.split(' ')
-  if(msg.from.first_name != "Bes"){
+  if(msg.from.first_name == "Bes"){
     if(elem == 'Тест' || elem == 'тест' || elem == 'Test' || elem == 'test'){
       bot.sendMessage(chatID, 
       `Все ок, 
